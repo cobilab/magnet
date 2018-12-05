@@ -40,7 +40,7 @@ will be exactly the same as running
 
 ### Compare Magnet with other methods
 If you want to compare Magnet with other methods, set the parameters in 
-**run.sh** bash script, then run it:
+**run.sh** bash script (at scripts folder), then run it:
 ```bash
 ./run.sh
 ```
