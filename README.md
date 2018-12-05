@@ -1,8 +1,6 @@
 <p align="center">
 <img src="imgs/logo.png" alt="Magnet" width="200" border="0" /></p>
-<br>
-
-<p align="center">Magnet: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA</p>
+<b><p align="center">Magnet: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA</p></b>
 
 ## INSTALL
 Get Magnet and make the project, using:
@@ -42,7 +40,7 @@ will be exactly the same as running
 
 ### Compare Magnet with other methods
 If you want to compare Magnet with other methods, set the parameters in 
-**run.sh** bash script, then run it:
+**run.sh** bash script, at `scripts/` directory, then run it:
 ```bash
 ./run.sh
 ```
