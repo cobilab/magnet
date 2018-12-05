@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pratas/Magnet.svg?branch=master)](https://travis-ci.org/pratas/Magnet)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 <p align="center">
 <img src="imgs/logo.png" alt="Magnet" width="200" border="0" /></p>
 <b><p align="center">Magnet: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA</p></b>
