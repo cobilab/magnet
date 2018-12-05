@@ -1,8 +1,8 @@
 <p align="center">
-<img src="imgs/logo.png" alt="Magnet" width="150" border="0" /></p>
+<img src="imgs/logo.png" alt="Magnet" width="200" border="0" /></p>
 <br>
 
-Magnet: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA
+<p align="center">Magnet: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA</p>
 
 ## INSTALL
 Get Magnet and make the project, using:
