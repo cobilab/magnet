@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/pratas/Magnet.svg?branch=master)](https://travis-ci.org/pratas/Magnet)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ea1d2e0376e46d1985d357b6c584dad)](https://www.codacy.com/app/pratas/Magnet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pratas/Magnet&amp;utm_campaign=Badge_Grade)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)<br>
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
+<br>
 <p align="center">
 <img src="imgs/logo.png" alt="Magnet" width="200" border="0" /></p>
 <b><p align="center">Magnet: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA</p></b>
