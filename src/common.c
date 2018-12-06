@@ -285,13 +285,16 @@ uint32_t FLog2(uint64_t i)
 //        Pow function from http://martin.ankerl.com/2007/10/04/
 //        optimized-pow-approximation-for-java-and-c-c/
 
-double Power(double a, double b)
+double Power (double base, double exponent)
   {
-  int tmp = (*(1 + (int *)&a));
-  int tmp2 = (int)(b * (tmp - 1072632447) + 1072632447);
-  double p = 0.0;
-  *(1 + (int * )&p) = tmp2;
-  return p;
+  union
+    {
+    double d;
+    int x[2];
+    } u = { base };
+  u.x[1] = (int) (exponent * (u.x[1] - 1072632447) + 1072632447);
+  u.x[0] = 0;
+  return u.d;
   }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -519,23 +522,6 @@ uint8_t *ReverseStr(uint8_t *str, uint32_t end)
     }
 
   return str;
-  }
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-void SortString(char str[])
-  {
-  char     tmp;
-  int32_t  i, j, length = strlen(str);
-
-  for(i = 0 ; i != length-1 ; ++i)
-    for (j = i+1 ; j != length ; ++j)
-      if(str[i] > str[j])
-        {
-        tmp    = str[i];
-        str[i] = str[j];
-        str[j] = tmp;
-        }
   }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -779,7 +765,7 @@ void PrintArgs(Parameters *P, Threads T, char *ref, char *tar){
   fprintf(stderr, "Sub-sampling ....................... %u\n", P->sample);
   fprintf(stderr, "Number of threads .................. %u\n", P->nThreads);
   for(n = 0 ; n < P->nModels ; ++n){
-    fprintf(stderr, "Reference model %d:\n", n+1);
+    fprintf(stderr, "Reference model %u:\n", n+1);
     fprintf(stderr, "  [+] Context order ................ %u\n", 
     T.model[n].ctx);
     fprintf(stderr, "  [+] Alpha denominator ............ %u\n", 

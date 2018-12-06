@@ -94,7 +94,8 @@ void PrintMenu(void){
   "    License v3 <http://www.gnu.org/licenses/gpl.html>. There             \n"
   "    is NOT ANY WARRANTY, to the extent permitted by law.                 \n"
   "                                                                         \n", 
-  VERSION, RELEASE, MIN_LEV, MAX_LEV, DEFAULT_SAMPLE, DEFAULT_THREADS);
+  (uint32_t) VERSION, (uint32_t) RELEASE, (uint32_t) MIN_LEV, (uint32_t) 
+  MAX_LEV, (uint32_t) DEFAULT_SAMPLE, (uint32_t) DEFAULT_THREADS);
   }
 
 void PrintVersion(void){
@@ -114,6 +115,7 @@ void PrintVersion(void){
   "You may redistribute copies of it under the terms of the GNU - General   \n"
   "Public License v3 <http://www.gnu.org/licenses/gpl.html>. There is NOT   \n"
   "ANY WARRANTY, to the extent permitted by law. Developed and Written by   \n"
-  "Diogo Pratas, Morteza Hosseini and Armando J. Pinho.\n\n", VERSION, RELEASE);
+  "Diogo Pratas, Morteza Hosseini and Armando J. Pinho.\n\n", (uint32_t) 
+  VERSION, (uint32_t) RELEASE);
   }
 
