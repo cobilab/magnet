@@ -10,7 +10,7 @@
 Get Magnet and make the project, using:
 ```bash
 git clone https://github.com/pratas/Magnet.git
-cd Magnet
+cd Magnet/src
 cmake .
 make
 ```
