@@ -25,7 +25,7 @@ If you want to run Magnet in stand-alone mode, use the following command:
 ```
 For example:
 ```bash
-./Magnet -l 3 -t 0.5 -o out.fq in.fq seq.fa
+./Magnet -l 3 -t 0.5 -o out.fq seq.fa in.fq 
 ```
 Options are described in the following sections.
 
@@ -39,7 +39,7 @@ any other file extension. By this explanation, running
 ```
 will be exactly the same as running
 ```bash
-./Magnet -l 3 -t 0.5 -o out.fq test1.fq test2.fa
+./Magnet -l 3 -t 0.5 -o out.fq test1.fa test2.fq
 ```
 
 ### Compare Magnet with other methods
@@ -72,7 +72,7 @@ SYNOPSIS
       ./Magnet [OPTION]... [IN_FILE_1] [IN_FILE_2]                       
                                                                          
 SAMPLE                                                                   
-      Filter exogenous: ./Magnet -l 3 -t 0.5 -o out.fq in.fq seq.fa      
+      Filter exogenous: ./Magnet -l 3 -t 0.5 -o out.fq in.fa seq.fq      
                                                                          
 DESCRIPTION                                                              
       Separate exogenous of endogenous DNA.                              
@@ -121,10 +121,10 @@ DESCRIPTION
            Number of threads.                                            
                                                                          
       [IN_FILE_1]                                                        
-           Input FASTQ file name -- MANDATORY.                           
+           Input FASTA file name -- MANDATORY.                           
                                                                          
       [IN_FILE_2]                                                        
-           Input FASTA file name -- MANDATORY.                           
+           Input FASTQ file name -- MANDATORY.                           
                                                                          
 COPYRIGHT                                                                
     Copyright (C) 2014-2018, IEETA, University of Aveiro.                
