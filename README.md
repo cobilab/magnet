@@ -23,7 +23,7 @@ If you want to run Magnet in stand-alone mode, use the following command:
 ```bash
 ./Magnet [OPTION]... [IN_FILE_1] [IN_FILE_2]
 ```
-For example, to compact & encrypt:
+For example:
 ```bash
 ./Magnet -l 3 -t 0.5 -o out.fq in.fq seq.fa
 ```
@@ -54,7 +54,7 @@ With this script, you can download the datasets, install the tools, run these to
 ## OPTIONS
 To see the possible options, type:
 ```bash
-./cryfa
+./Magnet
 ```
 
 which provides the following:
@@ -144,7 +144,7 @@ articles [[1]](https://en.wikipedia.org/wiki/Metagenomics),
 ## CITE
 Please cite the followings, if you use Magnet: 
 * D. Pratas, M. Hosseini and A.J. Pinho, "Magnet: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA,"
-*?*, 2018.
+*?*, 2019.
 
 
 ## RELEASES
