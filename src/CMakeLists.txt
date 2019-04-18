@@ -5,12 +5,11 @@ IF(UNIX)
  link_libraries(m)
 ENDIF(UNIX)
 
-project (MAGNET) 
+project (magnet) 
 SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 SET(RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 SET(CMAKE_BUILD_TYPE Release)
 
-add_executable (Magnet magnet.c mem.c time.c msg.c parser.c reads.c common.c buffer.c stream.c levels.c models.c pmodels.c defs.h param.h) 
-TARGET_LINK_LIBRARIES(Magnet pthread)
-
+add_executable (MAGNET magnet.c mem.c time.c msg.c parser.c reads.c common.c buffer.c stream.c levels.c models.c pmodels.c defs.h param.h) 
+TARGET_LINK_LIBRARIES(MAGNET pthread)
