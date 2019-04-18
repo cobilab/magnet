@@ -1,49 +1,49 @@
-[![Build Status](https://travis-ci.org/pratas/Magnet.svg?branch=master)](https://travis-ci.org/pratas/Magnet)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ea1d2e0376e46d1985d357b6c584dad)](https://www.codacy.com/app/pratas/Magnet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pratas/Magnet&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/pratas/magnet.svg?branch=master)](https://travis-ci.org/pratas/magnet)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ea1d2e0376e46d1985d357b6c584dad)](https://www.codacy.com/app/pratas/magnet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pratas/magnet&amp;utm_campaign=Badge_Grade)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 <br>&nbsp;
 <p align="center">
-<img src="imgs/logo.png" alt="Magnet" width="200" border="0" /></p>
-<b><p align="center">Magnet: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA</p></b>
+<img src="imgs/logo.png" alt="MAGNET" width="200" border="0" /></p>
+<b><p align="center">MAGNET: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA</p></b>
 
 ## INSTALL
-Get Magnet and make the project, using:
+Get MAGNET and make the project, using:
 ```bash
-git clone https://github.com/pratas/Magnet.git
-cd Magnet/src
+git clone https://github.com/pratas/magnet.git
+cd magnet/src
 cmake .
 make
 ```
-Note, an already compiled version of Magnet is available for 64 bit Linux OS in
+Note, an already compiled version of MAGNET is available for 64 bit Linux OS in
 the `bin/` directory.
 
 
 ## RUN
-If you want to run Magnet in stand-alone mode, use the following command:
+If you want to run MAGNET in stand-alone mode, use the following command:
 ```bash
-./Magnet [OPTION]... [IN_FILE_1] [IN_FILE_2]
+./MAGNET [OPTION]... [IN_FILE_1] [IN_FILE_2]
 ```
 For example:
 ```bash
-./Magnet -l 3 -t 0.5 -o out.fq in.fq seq.fa
+./MAGNET -l 3 -t 0.5 -o out.fq in.fq seq.fa
 ```
 Options are described in the following sections.
 
 ### Input file format
-Magnet automatically detects a genomic data file format by looking inside the
+MAGNET automatically detects a genomic data file format by looking inside the
 file and not by the file extension. For example, a FASTA file, say “test”, can
-be fed into Magnet as "test", "test.fa", "test.fasta", "test.fas", "test.fsa" or
+be fed into MAGNET as "test", "test.fa", "test.fasta", "test.fas", "test.fsa" or
 any other file extension. By this explanation, running
 ```bash
-./Magnet -l 3 -t 0.5 -o out.fq test1 test2
+./MAGNET -l 3 -t 0.5 -o out.fq test1 test2
 ```
 will be exactly the same as running
 ```bash
-./Magnet -l 3 -t 0.5 -o out.fq test1.fq test2.fa
+./MAGNET -l 3 -t 0.5 -o out.fq test1.fq test2.fa
 ```
 
-### Compare Magnet with other methods
-If you want to compare Magnet with other methods, set the parameters in 
+### Compare MAGNET with other methods
+If you want to compare MAGNET with other methods, set the parameters in 
 **run.sh** bash script, at `scripts/` directory, then run it:
 ```bash
 ./run.sh
@@ -54,13 +54,13 @@ With this script, you can download the datasets, install the tools, run these to
 ## OPTIONS
 To see the possible options, type:
 ```bash
-./Magnet
+./MAGNET
 ```
 
 which provides the following:
 ```
 NAME                                                                     
-      Magnet v18.11 - an ultra-fast and high-sensitive tool              
+      MAGNET v18.11 - an ultra-fast and high-sensitive tool              
                       to separate exogenous of endogenous DNA.           
                                                                          
 AUTHORS                                                                  
@@ -69,10 +69,10 @@ AUTHORS
       Armando J. Pinho    ap@ua.pt                                       
                                                                          
 SYNOPSIS                                                                 
-      ./Magnet [OPTION]... [IN_FILE_1] [IN_FILE_2]                       
+      ./MAGNET [OPTION]... [IN_FILE_1] [IN_FILE_2]                       
                                                                          
 SAMPLE                                                                   
-      Filter exogenous: ./Magnet -l 3 -t 0.5 -o out.fq in.fq seq.fa      
+      Filter exogenous: ./MAGNET -l 3 -t 0.5 -o out.fq in.fq seq.fa      
                                                                          
 DESCRIPTION                                                              
       Separate exogenous of endogenous DNA.                              
@@ -133,7 +133,7 @@ COPYRIGHT
     License v3 <http://www.gnu.org/licenses/gpl.html>. There             
     is NOT ANY WARRANTY, to the extent permitted by law.  
 ```
-Magnet uses standard ouput stream, hence, its output can be directly integrated
+MAGNET uses standard ouput stream, hence, its output can be directly integrated
 with pipelines.
 
 If you are interested in the topic of "metagenomics" and "ancient DNA", you can read the 
@@ -142,8 +142,8 @@ articles [[1]](https://en.wikipedia.org/wiki/Metagenomics),
 
 
 ## CITE
-Please cite the followings, if you use Magnet: 
-* D. Pratas, M. Hosseini and A.J. Pinho, "Magnet: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA,"
+Please cite the followings, if you use MAGNET: 
+* D. Pratas, M. Hosseini and A.J. Pinho, "MAGNET: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA,"
 *?*, 2019.
 
 
@@ -157,5 +157,5 @@ Please let us know if there is any
 
 
 ## LICENSE
-Magnet is under GPL v3 license. For more information, click 
+MAGNET is under GPL v3 license. For more information, click 
 [here](http://www.gnu.org/licenses/gpl-3.0.html).
