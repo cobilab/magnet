@@ -21,7 +21,7 @@ void PrintMenu(void){
   fprintf(stderr,
   "                                                                         \n"
   "NAME                                                                     \n"
-  "      Magnet v%u.%u - an ultra-fast and high-sensitive tool              \n"
+  "      MAGNET v%u.%u - an ultra-fast and high-sensitive tool              \n"
   "                      to separate exogenous of endogenous DNA.           \n"
   "                                                                         \n"
   "AUTHORS                                                                  \n"
@@ -30,7 +30,7 @@ void PrintMenu(void){
   "      Armando J. Pinho    ap@ua.pt                                       \n"
   "                                                                         \n"
   "SYNOPSIS                                                                 \n"
-  "      ./Magnet [OPTION]... [IN_FILE_1] [IN_FILE_2]                       \n"
+  "      ./MAGNET [OPTION]... [IN_FILE_1] [IN_FILE_2]                       \n"
   "                                                                         \n"
   "SAMPLE                                                                   \n"
   "      Filter exogenous: ./Magnet -l 3 -t 0.5 -o out.fq seq.fa in.fq      \n"
@@ -102,7 +102,7 @@ void PrintVersion(void){
   fprintf(stderr,
   "                                                                         \n"
   "                          ===================                            \n"
-  "                          |   Magnet %u.%u  |                            \n"
+  "                          |   MAGNET %u.%u  |                            \n"
   "                          ===================                            \n"
   "                                                                         \n"
   "                An ultra-fast and high-sensitive tool to                 \n"
