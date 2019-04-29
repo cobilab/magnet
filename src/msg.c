@@ -33,7 +33,7 @@ void PrintMenu(void){
   "      ./MAGNET [OPTION]... [IN_FILE_1] [IN_FILE_2]                       \n"
   "                                                                         \n"
   "SAMPLE                                                                   \n"
-  "      Filter exogenous: ./Magnet -l 3 -t 0.5 -o out.fq seq.fa in.fq      \n"
+  "      Filter exogenous: MAGNET -l 3 -t 0.5 -o out.fq seq.fa in.fq        \n"
   "                                                                         \n"
   "DESCRIPTION                                                              \n"
   "      Separate exogenous of endogenous DNA.                              \n"
