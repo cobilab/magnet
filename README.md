@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/cobilab/Magnet.svg?branch=master)](https://travis-ci.org/cobilab/Magnet)
+[![Build Status](https://travis-ci.org/cobilab/magnet.svg?branch=master)](https://travis-ci.org/cobilab/magnet)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ea1d2e0376e46d1985d357b6c584dad)](https://www.codacy.com/app/pratas/Magnet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pratas/Magnet&amp;utm_campaign=Badge_Grade)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 <br>&nbsp;
