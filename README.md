@@ -1,10 +1,8 @@
-[![Build Status](https://travis-ci.org/cobilab/magnet.svg?branch=master)](https://travis-ci.org/cobilab/magnet)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ea1d2e0376e46d1985d357b6c584dad)](https://www.codacy.com/app/pratas/Magnet?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pratas/Magnet&amp;utm_campaign=Badge_Grade)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
 <br>&nbsp;
 <p align="center">
 <img src="imgs/logo.png" alt="MAGNET" width="200" border="0" /></p>
-<b><p align="center">MAGNET: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA</p></b>
+<b><p align="center">MAGNET: an ultra-fast and high-sensitive tool to filter specific DNA content</p></b>
 
 ## INSTALL
 Get MAGNET and make the project, using:
@@ -60,22 +58,17 @@ To see the possible options, type:
 which provides the following:
 ```
 NAME                                                                     
-      MAGNET v18.11 - an ultra-fast and high-sensitive tool              
-                      to separate exogenous of endogenous DNA.           
-                                                                         
-AUTHORS                                                                  
-      Diogo Pratas        pratas@ua.pt                                   
-      Morteza Hosseini    seyedmorteza@ua.pt                             
-      Armando J. Pinho    ap@ua.pt                                       
-                                                                         
+      MAGNET v20 - an ultra-fast and high-sensitive tool              
+                      to filter specific DNA content.
+
 SYNOPSIS                                                                 
       ./MAGNET [OPTION]... [IN_FILE_1] [IN_FILE_2]                       
                                                                          
 SAMPLE                                                                   
-      Filter exogenous: ./MAGNET -l 3 -t 0.5 -o out.fq in.fq seq.fa      
+      Filter content: ./MAGNET -l 3 -t 0.5 -o out.fq in.fq seq.fa      
                                                                          
 DESCRIPTION                                                              
-      Separate exogenous of endogenous DNA.                              
+      Filter specific DNA content from FASTQ reads.                              
       Isolates specific reads with similarity to other sequence(s).      
       Filters FASTQ reads by similarity to FASTA genome sequence(s).     
       The genome sequence may be constituted by contigs, scaffolds,      
@@ -143,9 +136,7 @@ articles [[1]](https://en.wikipedia.org/wiki/Metagenomics),
 
 ## CITE
 Please cite the followings, if you use MAGNET: 
-* D. Pratas, M. Hosseini and A.J. Pinho, "MAGNET: an ultra-fast and high-sensitive tool to separate exogenous of endogenous DNA,"
-*?*, 2019.
-
+* D. Pratas, "MAGNET: an ultra-fast and high-sensitive tool to filter specific DNA content", 2023.
 
 ## RELEASES
 * [Release](https://github.com/pratas/magnet/releases) 1.
