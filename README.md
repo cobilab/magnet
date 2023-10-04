@@ -58,7 +58,7 @@ To see the possible options, type:
 which provides the following:
 ```
 NAME                                                                     
-      MAGNET v20 - an ultra-fast and high-sensitive tool              
+      MAGNET v23.2 - an ultra-fast and high-sensitive tool              
                       to filter specific DNA content.
 
 SYNOPSIS                                                                 
