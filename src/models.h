@@ -67,23 +67,23 @@ CModel;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-int32_t         BestId               (uint32_t *, uint32_t);
-void            HitSUBS              (CModel *);
-void            FailSUBS             (CModel *);
-void            FreeCModel           (CModel *);
-void            FreeShadow           (CModel *);
-void            GetPModelIdx         (U8 *, CModel *);
-U8              GetPModelIdxIR       (U8 *, CModel *);
-uint64_t        GetPModelIdxCorr     (U8 *, CModel *, uint64_t);
-void            CorrectCModelSUBS    (CModel *, PModel *, uint8_t);
-void            ResetCModelIdx       (CModel *);
-void            ResetShadowModel     (CModel *);
-void            UpdateCModelCounter  (CModel *, U32, U64);
-CModel          *CreateCModel        (U32, U32, U32, U8, U32, U32, U32);
-CModel          *CreateShadowModel   (CModel *);
-void            ComputePModel        (CModel *, PModel *, uint64_t, uint32_t);
-void            CorrectXModels       (CModel **, PModel **, uint8_t);    
-int             SelfSimilarity       (uint8_t *, uint64_t, uint64_t);
+int32_t       BestId               (uint32_t *, uint32_t);
+void          HitSUBS              (CModel *);
+void          FailSUBS             (CModel *);
+void          FreeCModel           (CModel *);
+void          FreeShadow           (CModel *);
+void          GetPModelIdx         (U8 *, CModel *);
+U8            GetPModelIdxIR       (U8 *, CModel *);
+uint64_t      GetPModelIdxCorr     (U8 *, CModel *, uint64_t);
+void          CorrectCModelSUBS    (CModel *, PModel *, uint8_t);
+void          ResetCModelIdx       (CModel *);
+void          ResetShadowModel     (CModel *);
+void          UpdateCModelCounter  (CModel *, U32, U64);
+CModel        *CreateCModel        (U32, U32, U32, U8, U32, U32, U32);
+CModel        *CreateShadowModel   (CModel *);
+void          ComputePModel        (CModel *, PModel *, uint64_t, uint32_t);
+void          CorrectXModels       (CModel **, PModel **, uint8_t, uint32_t);    
+int           SelfSimilarity       (uint8_t *, uint64_t, uint64_t);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

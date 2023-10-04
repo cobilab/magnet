@@ -27,7 +27,7 @@
 // - - - - - - - - - - - - - - - - M O D E L S - - - - - - - - - - - - - - - -
 
 CModel **Models;   // MEMORY SHARED BY THREADING
-
+Parameters *P;
 
 //////////////////////////////////////////////////////////////////////////////
 // - - - - - - - - - - - - - - R E S E T   M O D E L S - - - - - - - - - - - -
@@ -123,7 +123,7 @@ void CompressTarget(Threads T){
         bits += PModelSymbolLog(MX, sym);
         CalcDecayment(CMW, pModel, sym, P->gamma);
         RenormalizeWeights(CMW);
-        CorrectXModels(Shadow, pModel, sym);
+        CorrectXModels(Shadow, pModel, sym, P->nModels);
         UpdateCBuffer(symBuf);
         }
 

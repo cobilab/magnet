@@ -25,10 +25,6 @@ typedef struct{
   U8       invert;
   U32      sample;
   U32      col;
-/*
-  U32      windowSize;
-  U32      blockSize;
-*/
   double   gamma;
   double   threshold;
   U32      index;
@@ -36,7 +32,6 @@ typedef struct{
   U32      nThreads;
   U8       nFiles;
   U64      *size;
-//  uint8_t  *image;
   char     *output;
   char     *base;
   }
@@ -50,8 +45,6 @@ typedef struct{
   ModelPar *model;
   }
 Threads;
-
-Parameters *P;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
