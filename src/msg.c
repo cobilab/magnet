@@ -69,7 +69,7 @@ void PrintMenu(void){
   "           Portion of acceptance.                                        \n"  
   "           Acceptance bases (default: %u).                               \n"  
   "                                                                         \n"  
-  "      -o [OUT_FILE],  --output [OUT_FILE]                                \n"  
+  "      -o [OUT_FILE]                                                      \n"
   "           Output file name.                                             \n"  
   "           The OUT_FILE will contain the filtered reads.                 \n"  
   "                                                                         \n"  
