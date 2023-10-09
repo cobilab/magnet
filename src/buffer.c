@@ -49,6 +49,7 @@ void UpdateBuffer(BUF *B){
 // 
 void ResetCBuffer(CBUF *B){
   Free(B->buf-B->guard);
+//  B->buf  = (uint8_t *) Calloc(B->size, sizeof(uint8_t));
   B->buf  = (uint8_t *) Calloc(B->size+B->guard, sizeof(uint8_t));
   B->buf += B->guard;
 

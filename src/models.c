@@ -83,16 +83,16 @@ static void InsertKey(HashTable *H, U32 hi, U64 idx, U8 s){
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-void GetFreqsFromHCC(HCC c, uint32_t a, PModel *P){
-  P->sum  = (P->freqs[0] = 1 + a * ( c &  0x0f));           // NO +1: N ARITHCODER
-  P->sum += (P->freqs[1] = 1 + a * ((c & (0x0f<<4 ))>>4));  // NO +1: N ARITHCODER
-  P->sum += (P->freqs[2] = 1 + a * ((c & (0x0f<<8 ))>>8));  // NO +1: N ARITHCODER
-  P->sum += (P->freqs[3] = 1 + a * ((c & (0x0f<<12))>>12)); // NO +1: N ARITHCODER
+void GetFreqsFromHCC(HCC c, uint32_t a, PModel *PM){
+  PM->sum  = (PM->freqs[0] = 1 + a * ( c &  0x0f));           
+  PM->sum += (PM->freqs[1] = 1 + a * ((c & (0x0f<<4 ))>>4));  
+  PM->sum += (PM->freqs[2] = 1 + a * ((c & (0x0f<<8 ))>>8));  
+  PM->sum += (PM->freqs[3] = 1 + a * ((c & (0x0f<<12))>>12)); 
   }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-void GetHCCounters(HashTable *H, U64 key, PModel *P, uint32_t a){
+void GetHCCounters(HashTable *H, U64 key, PModel *PM, uint32_t a){
   U32 n, hIndex = key % HASH_SIZE;
   U16 b = key & 0xffff;
 
@@ -100,24 +100,24 @@ void GetHCCounters(HashTable *H, U64 key, PModel *P, uint32_t a){
   // FROM INDEX-1 TO 0
   for(n = pos+1 ; n-- ; ){
     if(H->entries[hIndex][n].key == b){
-      GetFreqsFromHCC(H->entries[hIndex][n].counters, a, P);
+      GetFreqsFromHCC(H->entries[hIndex][n].counters, a, PM);
       return;
       }
     }
   // FROM MAX_COLISIONS TO INDEX
   for(n = (H->maxC-1) ; n > pos ; --n){
     if(H->entries[hIndex][n].key == b){
-      GetFreqsFromHCC(H->entries[hIndex][n].counters, a, P);
+      GetFreqsFromHCC(H->entries[hIndex][n].counters, a, PM);
       return;
       }
     }
 
   // TODO: MAKE THIS ALREADY DONE!
-  P->freqs[0] = 1;
-  P->freqs[1] = 1;
-  P->freqs[2] = 1;
-  P->freqs[3] = 1;
-  P->sum      = 4; 
+  PM->freqs[0] = 1;
+  PM->freqs[1] = 1;
+  PM->freqs[2] = 1;
+  PM->freqs[3] = 1;
+  PM->sum      = 4; 
   return;
   }
 
@@ -156,7 +156,7 @@ void UpdateCModelCounter(CModel *M, U32 sym, U64 im){
     }
   else{
     AC = &M->array.counters[idx << 2];
-    if(++AC[sym] == M->maxCount){    
+    if(++AC[sym] >= M->maxCount){    
       AC[0] >>= 1;
       AC[1] >>= 1;
       AC[2] >>= 1;
@@ -328,8 +328,8 @@ void HitSUBS(CModel *M){
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-void CorrectCModelSUBS(CModel *M, PModel *P, uint8_t sym){
-  int32_t best = BestId(P->freqs, P->sum);
+void CorrectCModelSUBS(CModel *M, PModel *PM, uint8_t sym){
+  int32_t best = BestId(PM->freqs, PM->sum);
   switch(best){
     case -2:  // IT IS A ZERO COUNTER [NOT SEEN BEFORE]
       if(M->SUBS.in != 0)
@@ -369,19 +369,19 @@ void CorrectXModels(CModel **Shadow, PModel **PM, uint8_t sym, uint32_t nModels)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-void ComputePModel(CModel *M, PModel *P, uint64_t idx, uint32_t aDen){
+void ComputePModel(CModel *M, PModel *PM, uint64_t idx, uint32_t aDen){
   ACC *ac;
   switch(M->mode){
     case HASH_TABLE_MODE:
-      GetHCCounters(&M->hTable, ZHASH(idx), P, aDen);
+      GetHCCounters(&M->hTable, ZHASH(idx), PM, aDen);
     break;
     case ARRAY_MODE:
       ac = &M->array.counters[idx<<2];
-      P->freqs[0] = 1 + aDen * ac[0]; // +1 IS NOT NEEDED BECAUSE THERE IS NO AC
-      P->freqs[1] = 1 + aDen * ac[1]; // +1 IS NOT NEEDED BECAUSE THERE IS NO AC
-      P->freqs[2] = 1 + aDen * ac[2]; // +1 IS NOT NEEDED BECAUSE THERE IS NO AC
-      P->freqs[3] = 1 + aDen * ac[3]; // +1 IS NOT NEEDED BECAUSE THERE IS NO AC
-      P->sum = P->freqs[0] + P->freqs[1] + P->freqs[2] + P->freqs[3];
+      PM->freqs[0] = 1 + aDen * ac[0]; 
+      PM->freqs[1] = 1 + aDen * ac[1];
+      PM->freqs[2] = 1 + aDen * ac[2];
+      PM->freqs[3] = 1 + aDen * ac[3];
+      PM->sum = PM->freqs[0] + PM->freqs[1] + PM->freqs[2] + PM->freqs[3];
     break;
     default:
     fprintf(stderr, "Error: not implemented!\n");

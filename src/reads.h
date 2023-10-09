@@ -3,8 +3,8 @@
 
 #include "defs.h"
 
-#define DEFAULT_HEADER_SIZE  10000
-#define DEFAULT_READ_SIZE    10000
+#define DEFAULT_HEADER_SIZE  100000
+#define DEFAULT_READ_SIZE    100000
 #define READ_LEFT_GUARD      32
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

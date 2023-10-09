@@ -66,6 +66,7 @@ void CompressTarget(Threads T){
   Shadow      = (CModel **) Calloc(P->nModels, sizeof(CModel *));
   for(n = 0 ; n < P->nModels ; ++n)
     Shadow[n] = CreateShadowModel(Models[n]); 
+
   pModel      = (PModel **) Calloc(totModels, sizeof(PModel *));
   for(n = 0 ; n < totModels ; ++n)
     pModel[n] = CreatePModel(ALPHABET_SIZE);
@@ -79,28 +80,28 @@ void CompressTarget(Threads T){
     exit(1);
     }
 
-  char name_o[4096];
-  sprintf(name_o, "%s.%u", P->output, T.id);
-  FILE *Writer = Fopen(name_o, "w");
-
+  char name_o [10000];
+  sprintf(name_o,  "%s.%u", P->output,  T.id);
+  FILE *Writer  = Fopen(name_o,  "w");
   srand(T.id);
-  Read *Read = CreateRead(10000, 40000);
-  while((Read = GetRead(Reader, Read)) != NULL){
+  Read *Read = CreateRead(50000, 100000);
 
-    if(PA->nRead % P->nThreads == T.id){
+  while((Read = GetRead(Reader, Read)) != NULL)
+    {
+    if(PA->nRead % P->nThreads == T.id)
+      {
       nBase = strlen(Read->bases) - 1; // IT ALSO LOADS '\n' AT THE END
       bits  = 0;
 
-      for(idxPos = 0 ; idxPos < nBase ; ++idxPos){
-
+      for(idxPos = 0 ; idxPos < nBase ; ++idxPos)
+        {
         sym = Read->bases[idxPos];
-
-        if(sym == 'N') sym = 0;// rand() % 4; // ASSUME A 'A' -> 0, CAUSE:
-        // RANDOM BASE MODIFY THE RESULTS USING DIFFERENT THREADS
-        else           sym = DNASymToNum(sym);
+	
+	if((sym = DNASymToNum(sym)) == 4)
+	  sym = rand() % 4;
 
         symBuf->buf[symBuf->idx] = sym;
-        memset((void *)PT->freqs, 0, ALPHABET_SIZE * sizeof(double));
+        memset((void *)PT->freqs, 0, (ALPHABET_SIZE)* sizeof(double));
         n = 0;
         pos = &symBuf->buf[symBuf->idx-1];
         for(cModel = 0 ; cModel < P->nModels ; ++cModel){
@@ -126,22 +127,14 @@ void CompressTarget(Threads T){
         CorrectXModels(Shadow, pModel, sym, P->nModels);
         UpdateCBuffer(symBuf);
         }
-
+      
       if(BPBB(bits, nBase) < P->threshold){
-        if(P->invert){
-          fputc('0', Writer); // IGNORE READ
-          }
-        else{         
-          fputc('1', Writer); // WRITE READ
-          }
+        if(P->invert) fputc('0', Writer); // IGNORE READ
+        else          fputc('1', Writer); // WRITE READ
         }
       else{
-        if(P->invert){
-          fputc('1', Writer); // WRITE READ
-          }
-        else{
-          fputc('0', Writer); // IGNORE READ
-          } 
+        if(P->invert) fputc('1', Writer); // WRITE READ
+        else          fputc('0', Writer); // IGNORE READ
         }
       ResetModelsAndParam(symBuf, Shadow, CMW);
       }
@@ -197,10 +190,12 @@ void LoadReference(char *refName){
         idx = 0; 
         continue; 
         }
+
       if(sym == 'N') // WE CAN RAND HERE CAUSE IS ALWAYS IN ONE THREAD
-        symBuf->buf[symBuf->idx] = sym = (rand() % 4);
+        symBuf->buf[symBuf->idx] = sym = 0; //(rand() % 4);
       else
         symBuf->buf[symBuf->idx] = sym = DNASymToNum(sym);
+
       for(n = 0 ; n < P->nModels ; ++n){
         CModel *CM = Models[n];
         GetPModelIdx(symBuf->buf+symBuf->idx-1, CM);
@@ -248,20 +243,25 @@ void CompressAction(Threads *T, char *refName, char *baseName){
   fprintf(stderr, "Done!\n");
 
   fprintf(stderr, "  [+] Joinning streams ............. ");
-  FILE *OUT = Fopen(P->output, "w");
-  FILE *IN  = Fopen(P->base,   "r");
-  FILE **TMP = (FILE **) Calloc(P->nThreads, sizeof(FILE *));
+  FILE *OUT   = Fopen(P->output,  "w");
+  FILE *OUT2  = Fopen(P->output2, "w");
+  FILE *IN    = Fopen(P->base,    "r");
+  FILE **TMP  = (FILE **) Calloc(P->nThreads, sizeof(FILE *));
   for(n = 0 ; n < P->nThreads ; ++n){
     char name_o[MAX_NAME_OUT];
     sprintf(name_o, "%s.%u", P->output, n);
     TMP[n] = Fopen(name_o, "r");
     }
+
   Read *Read = CreateRead(10000, 40000);
   n = 0;
   while((Read = GetRead(IN, Read)) != NULL){
     if(fgetc(TMP[n++ % P->nThreads]) == '1')
       PutRead(Read, OUT);
+    else
+      PutRead(Read, OUT2);
     }
+
   for(n = 0 ; n < P->nThreads ; ++n){
     fclose(TMP[n]);
     char name_o[MAX_NAME_OUT];
@@ -270,6 +270,7 @@ void CompressAction(Threads *T, char *refName, char *baseName){
     }
   fclose(IN);
   fclose(OUT);
+  fclose(OUT2);
   fprintf(stderr, "Done!\n");
   }
 
@@ -282,7 +283,7 @@ void CompressAction(Threads *T, char *refName, char *baseName){
 
 int32_t main(int argc, char *argv[]){
 
-	char     **p = *&argv, **xargv, *xpl = NULL;
+  char     **p = *&argv, **xargv, *xpl = NULL;
   int32_t  xargc = 0;
   uint32_t n, k, col, ref;
   double   gamma;
@@ -344,11 +345,15 @@ int32_t main(int argc, char *argv[]){
   P->threshold = fabs(ArgsDouble (0.9,   p, argc, "-t", "--threshold"));
   P->gamma     = ((int)(P->gamma * 65536)) / 65536.0;
   P->output    = ArgsFileGen(p, argc, "-o", "filtered", ".fq");
+  P->output2   = ArgsFileGen(p, argc, "-2", "not-filtered", ".fq");
 
   FILE *OUTPUT = NULL;
   if(!P->force) 
     FAccessWPerm(P->output);
   OUTPUT = Fopen(P->output, "w");
+
+  FILE *OUTPUT2 = NULL;
+  OUTPUT2 = Fopen(P->output2, "w");
 
   if(P->nModels == 0){
     fprintf(stderr, "Error: at least you need to use a context model!\n");
@@ -389,11 +394,16 @@ int32_t main(int argc, char *argv[]){
   fprintf(stderr, "\n");
 
   fprintf(stderr, "==[ RESULTS ]=======================\n");
-  fprintf(stderr, "Results have been sent to file:%s\n", P->output);
+  fprintf(stderr, "Filtered reads in   : %s\n", P->output);
+  fprintf(stderr, "Unfiltered reads in : %s\n", P->output2);
+  fprintf(stderr, "\n");
 
-  //fprintf(stderr, "==[ STATISTICS ]====================\n");
-  //StopCalcAll(Time, clock());
-  //fprintf(stderr, "\n");
+  if(P->verbose)
+    {
+    fprintf(stderr, "==[ STATISTICS ]====================\n");
+    StopCalcAll(Time, clock());
+    fprintf(stderr, "\n");
+    }
 
   RemoveClock(Time);
   for(ref = 0 ; ref < P->nThreads ; ++ref)

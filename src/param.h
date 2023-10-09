@@ -33,6 +33,7 @@ typedef struct{
   U8       nFiles;
   U64      *size;
   char     *output;
+  char     *output2;
   char     *base;
   }
 Parameters;

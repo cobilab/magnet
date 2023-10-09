@@ -9,6 +9,7 @@
 #else
   #include <unistd.h>
 #endif
+#include <assert.h>
 
 typedef uint64_t ULL;
 typedef uint64_t U64;
@@ -27,7 +28,7 @@ typedef int8_t   I8;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#define MAX_NAME_OUT           10000
+#define MAX_NAME_OUT           100000
 #define SBASE                  65
 #define LOCAL_SIMILARITY       1
 #define MAX_LABEL              1024

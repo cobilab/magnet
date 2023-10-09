@@ -43,6 +43,7 @@ void RenormalizeWeights(CMWeight *CMW){
 
 void CalcDecayment(CMWeight *CMW, PModel **PM, uint8_t sym, double gamma){
   uint32_t n;
+  assert(sym < 4);
   CMW->totalWeight = 0;
   for(n = 0 ; n < CMW->totModels ; ++n){
     CMW->weight[n] = Power(CMW->weight[n], gamma) * (double) PM[n]->freqs[sym] 
@@ -99,18 +100,18 @@ void RemoveFPModel(FloatPModel *FM){
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-void ComputeWeightedFreqs(double w, PModel *P, FloatPModel *PT){
-  double f = w / P->sum;
-  PT->freqs[0] += (double) P->freqs[0] * f;
-  PT->freqs[1] += (double) P->freqs[1] * f;
-  PT->freqs[2] += (double) P->freqs[2] * f;
-  PT->freqs[3] += (double) P->freqs[3] * f;
+void ComputeWeightedFreqs(double w, PModel *PM, FloatPModel *PT){
+  double f = w / PM->sum;
+  PT->freqs[0] += (double) PM->freqs[0] * f;
+  PT->freqs[1] += (double) PM->freqs[1] * f;
+  PT->freqs[2] += (double) PM->freqs[2] * f;
+  PT->freqs[3] += (double) PM->freqs[3] * f;
   }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-double PModelSymbolLog(PModel *P, U32 s){
-  return log((double) P->sum / P->freqs[s]) / M_LN2; // TODO: FLOG2 ?
+double PModelSymbolLog(PModel *PM, U32 s){
+  return log((double) PM->sum / PM->freqs[s]) / M_LN2; // TODO: FLOG2 ?
   }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -8,6 +8,7 @@
 #include "mem.h"
 #include "common.h"
 #include "msg.h"
+#include "param.h"
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -757,20 +758,20 @@ void PrintArgs(Parameters *P, Threads T, char *ref, char *tar){
   uint32_t n;
 
   fprintf(stderr, "==[ CONFIGURATION ]=================\n");
-  fprintf(stderr, "Verbose mode ....................... %s\n", P->verbose == 0 
+  fprintf(stderr, "Verbose mode ....................... %s\n", P->verbose == 0
   ? "no" : "yes");
-  fprintf(stderr, "Force mode ......................... %s\n", P->force == 0 ? 
+  fprintf(stderr, "Force mode ......................... %s\n", P->force == 0 ?
   "no" : "yes");
   fprintf(stderr, "Compression level .................. %u\n", P->level);
   fprintf(stderr, "Sub-sampling ....................... %u\n", P->sample);
   fprintf(stderr, "Number of threads .................. %u\n", P->nThreads);
   for(n = 0 ; n < P->nModels ; ++n){
     fprintf(stderr, "Reference model %u:\n", n+1);
-    fprintf(stderr, "  [+] Context order ................ %u\n", 
+    fprintf(stderr, "  [+] Context order ................ %u\n",
     T.model[n].ctx);
-    fprintf(stderr, "  [+] Alpha denominator ............ %u\n", 
+    fprintf(stderr, "  [+] Alpha denominator ............ %u\n",
     T.model[n].den);
-    fprintf(stderr, "  [+] Inverted repeats ............. %s\n", 
+    fprintf(stderr, "  [+] Inverted repeats ............. %s\n",
     T.model[n].ir == 0 ? "no" : "yes");
     fprintf(stderr, "  [+] Allowable substitutions ...... %u\n",
     T.model[n].edits);
