@@ -120,7 +120,7 @@ DESCRIPTION
            Input FASTA file name -- MANDATORY.                           
                                                                          
 COPYRIGHT                                                                
-    Copyright (C) 2014-2018, IEETA, University of Aveiro.                
+    Copyright (C) 2014-2024, IEETA, University of Aveiro.                
     This is a Free software, under GPLv3. You may redistribute           
     copies of it under the terms of the GNU - General Public             
     License v3 <http://www.gnu.org/licenses/gpl.html>. There             
@@ -136,7 +136,7 @@ articles [[1]](https://en.wikipedia.org/wiki/Metagenomics),
 
 ## CITE
 Please cite the followings, if you use MAGNET: 
-* D. Pratas, "MAGNET: an ultra-fast and high-sensitive tool to filter specific DNA content", 2023.
+* Under review
 
 ## RELEASES
 * [Release](https://github.com/pratas/magnet/releases) 1.
