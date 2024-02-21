@@ -88,7 +88,7 @@ void PrintMenu(void){
   "           Input FASTQ file name -- MANDATORY.                           \n"  
   "                                                                         \n" 
   "COPYRIGHT                                                                \n"
-  "    Copyright (C) 2017-2024, IEETA, University of Aveiro.                \n"
+  "    Copyright (C) 2014-2024, IEETA, University of Aveiro.                \n"
   "    This is a Free software, under GPLv3. You may redistribute           \n"
   "    copies of it under the terms of the GNU - General Public             \n"
   "    License v3 <http://www.gnu.org/licenses/gpl.html>. There             \n"
