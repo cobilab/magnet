@@ -136,7 +136,7 @@ articles [[1]](https://en.wikipedia.org/wiki/Metagenomics),
 
 ## CITE
 Please cite the followings, if you use MAGNET: 
-* Under review
+* Sousa, Maria JP, Armando J. Pinho, and Diogo Pratas. A sensitive Compression-Based Method for Filtering Targeted FASTQ Sequencing Reads. 2024 32nd European Signal Processing Conference (EUSIPCO). IEEE, 2024.
 
 ## RELEASES
 * [Release](https://github.com/pratas/magnet/releases) 1.
